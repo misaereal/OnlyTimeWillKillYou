@@ -1,0 +1,36 @@
+[gd_scene format=3 uid="uid://73gw0hie24b3"]
+
+[ext_resource type="PackedScene" uid="uid://dh8w1bcisox60" path="res://Scenes/player.tscn" id="1_8ffim"]
+[ext_resource type="Script" uid="uid://c7vmqf26hb435" path="res://Assets/Scripts/timerUi.gd" id="2_xfk5q"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_7p6j4"]
+font_size = 30
+outline_size = 9
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uj04i"]
+size = Vector2(2770, 20)
+
+[node name="Level1" type="Node2D" unique_id=2032076204]
+
+[node name="Player" parent="." unique_id=734694769 instance=ExtResource("1_8ffim")]
+position = Vector2(439, 426)
+
+[node name="Timer" type="Label" parent="." unique_id=1077382022]
+z_index = 7
+offset_left = 44.0
+offset_top = 31.0
+offset_right = 164.0
+offset_bottom = 119.0
+text = "60:00"
+label_settings = SubResource("LabelSettings_7p6j4")
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("2_xfk5q")
+
+[node name="Floor" type="Area2D" parent="." unique_id=752291494]
+position = Vector2(18, 663)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Floor" unique_id=1314167605]
+position = Vector2(515, -34)
+shape = SubResource("RectangleShape2D_uj04i")
