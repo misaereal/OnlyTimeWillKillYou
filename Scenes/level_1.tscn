@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://frisem13rqc3" path="res://Assets/Images/UI/DashUI.png" id="5_6444e"]
 [ext_resource type="Script" uid="uid://biwbyuvmjjqsh" path="res://Assets/Scripts/dashIcon.gd" id="6_evi0p"]
 [ext_resource type="Texture2D" uid="uid://b83j6ngctawc6" path="res://Assets/Images/Sprites/Walls.png" id="7_lsmp6"]
+[ext_resource type="PackedScene" uid="uid://b3qanomsem5ju" path="res://Scenes/client.tscn" id="7_xrdnt"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_7p6j4"]
 font_size = 30
@@ -337,3 +338,14 @@ shape = SubResource("RectangleShape2D_chwpn")
 position = Vector2(138, 676)
 scale = Vector2(2.8, 2.8)
 texture = ExtResource("7_lsmp6")
+
+[node name="Clients" type="Node2D" parent="." unique_id=692624932]
+
+[node name="Client1" parent="Clients" unique_id=162573114 instance=ExtResource("7_xrdnt")]
+position = Vector2(1267, 102)
+
+[node name="Client2" parent="Clients" unique_id=706212751 instance=ExtResource("7_xrdnt")]
+position = Vector2(1308, 1040)
+
+[node name="Client3" parent="Clients" unique_id=1174504231 instance=ExtResource("7_xrdnt")]
+position = Vector2(-1035, 106)

@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://b3qanomsem5ju"]
+
+[ext_resource type="Script" uid="uid://c3fenppyfmnhw" path="res://Assets/Scripts/client.gd" id="1_de1uw"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_p5viw"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uj04i"]
+
+[node name="Client" type="CharacterBody2D" unique_id=162573114]
+scale = Vector2(3, 3)
+script = ExtResource("1_de1uw")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1660935389]
+texture = SubResource("CanvasTexture_p5viw")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1723446697]
+shape = SubResource("RectangleShape2D_uj04i")
+debug_color = Color(1, 0.0008257793, 0.022295319, 1)
