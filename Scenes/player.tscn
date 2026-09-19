@@ -54,6 +54,9 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uj04i"]
+size = Vector2(124.28572, 108.57143)
+
 [node name="Player" type="CharacterBody2D" unique_id=734694769 groups=["player"]]
 scale = Vector2(0.7, 0.7)
 script = ExtResource("1_cvnsp")
@@ -97,5 +100,12 @@ position = Vector2(40, 25.714287)
 scale = Vector2(0.08, 0.085)
 sprite_frames = SubResource("SpriteFrames_uj04i")
 animation = &"run"
-frame_progress = 0.95381093
+frame_progress = 0.7874078
 speed_scale = 1.7
+
+[node name="AttackArea" type="Area2D" parent="." unique_id=933916403]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackArea" unique_id=2006400194]
+position = Vector2(143.57143, 38.571423)
+scale = Vector2(0.99999994, 0.99999994)
+shape = SubResource("RectangleShape2D_uj04i")

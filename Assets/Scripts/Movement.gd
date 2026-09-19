@@ -32,9 +32,17 @@ var _coyote_timer: float = 0.0
 var _jump_buffer_timer: float = 0.0
 var _was_on_floor: bool = false
 
+@export_category("Attack")
+@export var attack_action: String = "attack"
+@export var attack_damage: int = 1
+@export var attack_cooldown: float = 0.4
+
+var _attack_cooldown_timer: float = 0.0
+
 @onready var gravity: float = ProjectSettings.get_setting("physics/2d/default_gravity")
 @onready var sprite: Node2D = get_node_or_null("Sprite2D")
 @onready var animated_sprite: AnimatedSprite2D = get_node_or_null("AnimatedSprite2D")
+@onready var attack_area: Area2D = get_node_or_null("AttackArea")
 
 signal jumped
 signal landed
@@ -66,6 +74,7 @@ func _physics_process(delta: float) -> void:
 			_end_wall_climb()
 
 	_update_animation()
+	_handle_attack(delta)
 
 func _handle_timers(delta: float) -> void:
 	if is_on_floor():
@@ -169,3 +178,16 @@ func _update_animation() -> void:
 	else:
 		if animated_sprite.animation != "idle":
 			animated_sprite.play("idle")
+
+func _handle_attack(delta: float) -> void:
+	_attack_cooldown_timer = max(_attack_cooldown_timer - delta, 0.0)
+
+	if not attack_area:
+		return
+
+	if Input.is_action_just_pressed(attack_action) and _attack_cooldown_timer <= 0.0:
+		_attack_cooldown_timer = attack_cooldown
+
+		for body in attack_area.get_overlapping_bodies():
+			if body.is_in_group("enemy") and body.has_method("take_damage"):
+				body.take_damage(attack_damage)
