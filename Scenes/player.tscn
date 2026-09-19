@@ -5,6 +5,12 @@
 [ext_resource type="Texture2D" uid="uid://frisem13rqc3" path="res://Assets/Images/UI/DashUI.png" id="3_vgqql"]
 [ext_resource type="Script" uid="uid://biwbyuvmjjqsh" path="res://Assets/Scripts/dashIcon.gd" id="4_fkybt"]
 [ext_resource type="Script" uid="uid://c7vmqf26hb435" path="res://Assets/Scripts/timerUi.gd" id="5_fkybt"]
+[ext_resource type="Texture2D" uid="uid://bpg42rjq0o3v3" path="res://Assets/Images/Sprites/frame0000.png" id="6_gymyn"]
+[ext_resource type="Texture2D" uid="uid://dal2ogy8hcr16" path="res://Assets/Images/Sprites/frame0001.png" id="7_pu2lt"]
+[ext_resource type="Texture2D" uid="uid://cwk1e05r0w8bi" path="res://Assets/Images/Sprites/frame0002.png" id="8_ukyrk"]
+[ext_resource type="Texture2D" uid="uid://kdu4urd3t4oa" path="res://Assets/Images/Sprites/frame0003.png" id="9_7dp3o"]
+[ext_resource type="Texture2D" uid="uid://cr1yq4jdrrr11" path="res://Assets/Images/Sprites/frame0004.png" id="10_h4iuc"]
+[ext_resource type="Texture2D" uid="uid://cmleo08dkv2ar" path="res://Assets/Images/Sprites/frame0005.png" id="11_fd4e3"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_fkybt"]
 height = 122.85731
@@ -13,6 +19,40 @@ height = 122.85731
 font_size = 45
 outline_size = 16
 outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_uj04i"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_v0iea")
+}],
+"loop": 1,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_gymyn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_pu2lt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_ukyrk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_7dp3o")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_h4iuc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_fd4e3")
+}],
+"loop": 1,
+"name": &"run",
+"speed": 5.0
+}]
 
 [node name="Player" type="CharacterBody2D" unique_id=734694769]
 scale = Vector2(0.7, 0.7)
@@ -25,6 +65,7 @@ scale = Vector2(2.4285693, 0.9999986)
 shape = SubResource("CapsuleShape2D_fkybt")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1236084615]
+visible = false
 position = Vector2(39.285717, 26.680052)
 scale = Vector2(0.078571424, 0.0865971)
 texture = ExtResource("1_v0iea")
@@ -50,3 +91,11 @@ label_settings = SubResource("LabelSettings_x3wgy")
 horizontal_alignment = 1
 vertical_alignment = 1
 script = ExtResource("5_fkybt")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=60944209]
+position = Vector2(40, 25.714287)
+scale = Vector2(0.08, 0.085)
+sprite_frames = SubResource("SpriteFrames_uj04i")
+animation = &"run"
+frame_progress = 0.2136028
+speed_scale = 1.7

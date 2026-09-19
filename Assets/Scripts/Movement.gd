@@ -34,6 +34,7 @@ var _was_on_floor: bool = false
 
 @onready var gravity: float = ProjectSettings.get_setting("physics/2d/default_gravity")
 @onready var sprite: Node2D = get_node_or_null("Sprite2D")
+@onready var animated_sprite: AnimatedSprite2D = get_node_or_null("AnimatedSprite2D")
 
 signal jumped
 signal landed
@@ -63,6 +64,8 @@ func _physics_process(delta: float) -> void:
 		landed.emit()
 		if _wall_run_active:
 			_end_wall_climb()
+
+	_update_animation()
 
 func _handle_timers(delta: float) -> void:
 	if is_on_floor():
@@ -111,8 +114,11 @@ func _handle_horizontal_movement(delta: float) -> void:
 	if sprite and input_dir != 0.0:
 		sprite.scale.x = abs(sprite.scale.x) * sign(input_dir)
 
+	if animated_sprite and input_dir != 0.0:
+		animated_sprite.flip_h = input_dir < 0.0
+
 func _check_wall_climb_trigger(pre_slide_velocity: Vector2, pre_slide_on_floor: bool) -> void:
-	if not is_on_wall() :
+	if not is_on_wall():
 		return
 	if absf(pre_slide_velocity.x) < wall_run_min_speed:
 		return
@@ -129,12 +135,16 @@ func _handle_wall_climb(delta: float) -> void:
 	velocity.y = -wall_climb_speed
 	velocity.x = _wall_run_dir * wall_stick_speed  # garde le perso collé au mur
 
-	if sprite:
+	if animated_sprite:
 		var target_angle := deg_to_rad(90.0) * -_wall_run_dir
-		sprite.rotation = lerp_angle(sprite.rotation, target_angle, wall_run_rotation_speed * delta)
+		animated_sprite.rotation = lerp_angle(animated_sprite.rotation, target_angle, wall_run_rotation_speed * delta)
+		animated_sprite.flip_h = _wall_run_dir < 0.0
+
+	if sprite:
+		sprite.scale.x = abs(sprite.scale.x) * _wall_run_dir
 
 func _check_wall_climb_end() -> void:
-	var input_dir := Input.get_axis("move_left", "move_right")
+	var input_dir: float = Input.get_axis("move_left", "move_right")
 	var still_holding: bool = input_dir != 0.0 and sign(input_dir) == _wall_run_dir
 
 	if not is_on_wall() or not still_holding:
@@ -143,5 +153,19 @@ func _check_wall_climb_end() -> void:
 func _end_wall_climb() -> void:
 	_wall_run_active = false
 	_wall_run_dir = 0.0
-	if sprite:
-		sprite.rotation = 0.0
+	if animated_sprite:
+		animated_sprite.rotation = 0.0
+
+func _update_animation() -> void:
+	if not animated_sprite:
+		return
+
+	var input_dir := Input.get_axis("move_left", "move_right")
+	var is_moving := absf(velocity.x) > 10.0 and input_dir != 0.0
+
+	if _wall_run_active or is_moving:
+		if animated_sprite.animation != "run":
+			animated_sprite.play("run")
+	else:
+		if animated_sprite.animation != "idle":
+			animated_sprite.play("idle")

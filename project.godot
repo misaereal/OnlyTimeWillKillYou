@@ -15,9 +15,12 @@ config/description="ONLY TIME WILL KILL YOU is a super-fast 2D action-platformer
 config/version="1.0"
 run/main_scene="uid://73gw0hie24b3"
 config/features=PackedStringArray("4.7", "Forward Plus")
-boot_splash/bg_color=Color(1, 1, 1, 1)
 boot_splash/image="uid://c6pfcggf4sapi"
 config/icon="uid://d4ae1ljv20wua"
+
+[audio]
+
+buses/bg_color=Color(1, 1, 1, 1)
 
 [autoload]
 
