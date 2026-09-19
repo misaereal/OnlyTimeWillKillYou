@@ -12,9 +12,6 @@ font_size = 30
 outline_size = 9
 outline_color = Color(0, 0, 0, 1)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_uj04i"]
-size = Vector2(2770, 20)
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xrdnt"]
 size = Vector2(1223.9808, 20)
 
@@ -136,12 +133,6 @@ horizontal_alignment = 1
 vertical_alignment = 1
 script = ExtResource("2_xfk5q")
 
-[node name="Floor" type="StaticBody2D" parent="." unique_id=1970179051]
-position = Vector2(533, 629)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Floor" unique_id=1314167605]
-shape = SubResource("RectangleShape2D_uj04i")
-
 [node name="UI" type="Node" parent="." unique_id=756694225]
 
 [node name="DashIcon" type="Sprite2D" parent="UI" unique_id=1660280970]
@@ -151,12 +142,8 @@ texture = ExtResource("5_6444e")
 script = ExtResource("6_evi0p")
 player_path = NodePath("../../Player")
 
-[node name="walls" type="Area2D" parent="." unique_id=1801734147]
-
-[node name="Walls" type="Sprite2D" parent="walls" unique_id=1150543861]
-position = Vector2(138, 676)
-scale = Vector2(2.8, 2.8)
-texture = ExtResource("7_lsmp6")
+[node name="walls" type="StaticBody2D" parent="." unique_id=506137166]
+z_index = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="walls" unique_id=1826691407]
 position = Vector2(138.99997, -20)
@@ -166,7 +153,7 @@ shape = SubResource("RectangleShape2D_xrdnt")
 [node name="CollisionShape2D4" type="CollisionShape2D" parent="walls" unique_id=182314295]
 position = Vector2(1392.0001, 1016)
 rotation = 1.5555494
-scale = Vector2(2.085, 2.085)
+scale = Vector2(2.0850003, 2.0850003)
 shape = SubResource("RectangleShape2D_wrinw")
 
 [node name="CollisionShape2D5" type="CollisionShape2D" parent="walls" unique_id=166989802]
@@ -345,3 +332,8 @@ shape = SubResource("RectangleShape2D_vyomg")
 position = Vector2(631.76953, 486.875)
 scale = Vector2(2.085, 2.085)
 shape = SubResource("RectangleShape2D_chwpn")
+
+[node name="Walls" type="Sprite2D" parent="." unique_id=1150543861]
+position = Vector2(138, 676)
+scale = Vector2(2.8, 2.8)
+texture = ExtResource("7_lsmp6")

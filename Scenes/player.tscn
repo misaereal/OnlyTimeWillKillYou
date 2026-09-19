@@ -7,6 +7,7 @@
 size = Vector2(61, 103)
 
 [node name="Player" type="CharacterBody2D" unique_id=734694769]
+scale = Vector2(0.7, 0.7)
 script = ExtResource("1_cvnsp")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=820356157]
