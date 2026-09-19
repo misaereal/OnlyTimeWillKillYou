@@ -6,7 +6,7 @@ var served_clients: int = 0
 
 func _ready() -> void:
 	for client in clients:
-		clients.served.connect(_on_client_served)
+		client.served.connect(_on_client_served)
 
 	GameTimer.reset(60.0)
 	GameTimer.start()

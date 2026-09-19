@@ -2,16 +2,8 @@
 
 [ext_resource type="Script" uid="uid://qig1xritmimw" path="res://Assets/Scripts/level.gd" id="1_7p6j4"]
 [ext_resource type="PackedScene" uid="uid://dh8w1bcisox60" path="res://Scenes/player.tscn" id="1_8ffim"]
-[ext_resource type="Script" uid="uid://c7vmqf26hb435" path="res://Assets/Scripts/timerUi.gd" id="2_xfk5q"]
-[ext_resource type="Texture2D" uid="uid://frisem13rqc3" path="res://Assets/Images/UI/DashUI.png" id="5_6444e"]
-[ext_resource type="Script" uid="uid://biwbyuvmjjqsh" path="res://Assets/Scripts/dashIcon.gd" id="6_evi0p"]
 [ext_resource type="Texture2D" uid="uid://b83j6ngctawc6" path="res://Assets/Images/Sprites/Walls.png" id="7_lsmp6"]
 [ext_resource type="PackedScene" uid="uid://b3qanomsem5ju" path="res://Scenes/client.tscn" id="7_xrdnt"]
-
-[sub_resource type="LabelSettings" id="LabelSettings_7p6j4"]
-font_size = 30
-outline_size = 9
-outline_color = Color(0, 0, 0, 1)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xrdnt"]
 size = Vector2(1223.9808, 20)
@@ -121,27 +113,6 @@ script = ExtResource("1_7p6j4")
 [node name="Player" parent="." unique_id=734694769 instance=ExtResource("1_8ffim")]
 z_index = 2
 position = Vector2(481, 76)
-
-[node name="Timer" type="Label" parent="." unique_id=1077382022]
-z_index = 7
-offset_left = 44.0
-offset_top = 31.0
-offset_right = 164.0
-offset_bottom = 119.0
-text = "60:00"
-label_settings = SubResource("LabelSettings_7p6j4")
-horizontal_alignment = 1
-vertical_alignment = 1
-script = ExtResource("2_xfk5q")
-
-[node name="UI" type="Node" parent="." unique_id=756694225]
-
-[node name="DashIcon" type="Sprite2D" parent="UI" unique_id=1660280970]
-position = Vector2(97, 549)
-scale = Vector2(0.29376367, 0.2937637)
-texture = ExtResource("5_6444e")
-script = ExtResource("6_evi0p")
-player_path = NodePath("../../Player")
 
 [node name="walls" type="StaticBody2D" parent="." unique_id=506137166]
 z_index = 1
