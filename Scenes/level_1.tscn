@@ -6,6 +6,7 @@
 [ext_resource type="Script" uid="uid://dyuyc0ab4twym" path="res://Assets/Scripts/Movement.gd" id="3_6444e"]
 [ext_resource type="Texture2D" uid="uid://frisem13rqc3" path="res://Assets/Images/UI/DashUI.png" id="5_6444e"]
 [ext_resource type="Script" uid="uid://biwbyuvmjjqsh" path="res://Assets/Scripts/dashIcon.gd" id="6_evi0p"]
+[ext_resource type="Texture2D" uid="uid://b83j6ngctawc6" path="res://Assets/Images/Sprites/Walls.png" id="7_lsmp6"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_7p6j4"]
 font_size = 30
@@ -15,15 +16,31 @@ outline_color = Color(0, 0, 0, 1)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uj04i"]
 size = Vector2(2770, 20)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xrdnt"]
+size = Vector2(1223.9808, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wrinw"]
+size = Vector2(550.11993, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_chwpn"]
+size = Vector2(550.11993, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_af3po"]
+size = Vector2(449.16382, 42.611664)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_p5viw"]
+size = Vector2(1223.9808, 20)
+
 [node name="Level1" type="Node2D" unique_id=2032076204]
 script = ExtResource("1_7p6j4")
 
 [node name="Player" parent="." unique_id=734694769 instance=ExtResource("1_8ffim")]
 z_index = 2
-position = Vector2(439, 426)
+position = Vector2(481, 76)
 script = ExtResource("3_6444e")
 
 [node name="Timer" type="Label" parent="." unique_id=1077382022]
+visible = false
 z_index = 7
 offset_left = 44.0
 offset_top = 31.0
@@ -36,16 +53,54 @@ vertical_alignment = 1
 script = ExtResource("2_xfk5q")
 
 [node name="Floor" type="StaticBody2D" parent="." unique_id=1970179051]
+visible = false
 position = Vector2(533, 629)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Floor" unique_id=1314167605]
+visible = false
 shape = SubResource("RectangleShape2D_uj04i")
 
 [node name="UI" type="Node" parent="." unique_id=756694225]
 
 [node name="DashIcon" type="Sprite2D" parent="UI" unique_id=1660280970]
+visible = false
 position = Vector2(97, 549)
 scale = Vector2(0.29376367, 0.2937637)
 texture = ExtResource("5_6444e")
 script = ExtResource("6_evi0p")
 player_path = NodePath("../../Player")
+
+[node name="walls" type="Area2D" parent="." unique_id=1801734147]
+
+[node name="Walls" type="Sprite2D" parent="walls" unique_id=1150543861]
+position = Vector2(138, 676)
+scale = Vector2(2.8, 2.8)
+texture = ExtResource("7_lsmp6")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="walls" unique_id=1826691407]
+position = Vector2(138.99997, -20)
+scale = Vector2(2.085, 2.085)
+shape = SubResource("RectangleShape2D_xrdnt")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="walls" unique_id=182314295]
+position = Vector2(1392.0001, 1016)
+rotation = 1.5555494
+scale = Vector2(2.085, 2.085)
+shape = SubResource("RectangleShape2D_wrinw")
+
+[node name="CollisionShape2D5" type="CollisionShape2D" parent="walls" unique_id=166989802]
+position = Vector2(-1071.9999, 772.9999)
+rotation = 1.5695958
+scale = Vector2(2.085, 2.085)
+shape = SubResource("RectangleShape2D_chwpn")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="walls" unique_id=881305445]
+position = Vector2(1375.4818, 422.82578)
+rotation = 1.5591663
+scale = Vector2(2.085, 2.085)
+shape = SubResource("RectangleShape2D_af3po")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="walls" unique_id=980872434]
+position = Vector2(150, 1373)
+scale = Vector2(2.085, 2.085)
+shape = SubResource("RectangleShape2D_p5viw")
