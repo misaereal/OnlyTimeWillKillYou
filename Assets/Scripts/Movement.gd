@@ -6,8 +6,19 @@ extends CharacterBody2D
 @export var friction: float = 5000.0
 @export var air_control_multiplier: float = 0.8
 
+@export_category("Wall Climb")
+@export var wall_run_min_speed: float = 400.0     # vitesse mini au sol pour déclencher
+@export var wall_climb_speed: float = 500.0        # vitesse de montée le long du mur
+@export var wall_stick_speed: float = 60.0         # petite poussée horizontale pour rester collé au mur
+@export var wall_run_rotation_speed: float = 12.0
+
+var _wall_run_active: bool = false
+var _wall_run_dir: float = 0.0  # 1 = mur à droite (tu courais vers la droite), -1 = mur à gauche
+
 @export_category("Jump")
-@export var jump_velocity: float = -620.0
+@export var jump_velocity: float = -420.0
+@export var jump_forward_multiplier: float = 1.3
+@export var min_jump_forward_boost: float = 300.0
 @export var gravity_scale: float = 1.0
 @export var fall_gravity_multiplier: float = 1.6
 @export var low_jump_gravity_multiplier: float = 2.2
@@ -22,22 +33,36 @@ var _jump_buffer_timer: float = 0.0
 var _was_on_floor: bool = false
 
 @onready var gravity: float = ProjectSettings.get_setting("physics/2d/default_gravity")
-@onready var sprite: Node = get_node_or_null("Sprite2D")
+@onready var sprite: Node2D = get_node_or_null("Sprite2D")
 
 signal jumped
 signal landed
 
 func _physics_process(delta: float) -> void:
 	_handle_timers(delta)
-	_handle_gravity(delta)
-	_handle_jump_input(delta)
-	_handle_horizontal_movement(delta)
 
-	_was_on_floor = is_on_floor()
+	if _wall_run_active:
+		_handle_wall_climb(delta)
+	else:
+		_handle_gravity(delta)
+		_handle_jump_input(delta)
+		_handle_horizontal_movement(delta)
+
+	var pre_slide_velocity: Vector2 = velocity
+	var pre_slide_on_floor: bool = is_on_floor()
+	_was_on_floor = pre_slide_on_floor
+
 	move_and_slide()
+
+	if _wall_run_active:
+		_check_wall_climb_end()
+	else:
+		_check_wall_climb_trigger(pre_slide_velocity, pre_slide_on_floor)
 
 	if is_on_floor() and not _was_on_floor:
 		landed.emit()
+		if _wall_run_active:
+			_end_wall_climb()
 
 func _handle_timers(delta: float) -> void:
 	if is_on_floor():
@@ -66,6 +91,9 @@ func _handle_jump_input(_delta: float) -> void:
 	var can_jump := _coyote_timer > 0.0
 	if _jump_buffer_timer > 0.0 and can_jump:
 		velocity.y = jump_velocity
+		var facing_dir: float = signf(velocity.x) if absf(velocity.x) > 10.0 else (1.0 if not sprite else signf(sprite.scale.x))
+		var boost: float = max(absf(velocity.x) * jump_forward_multiplier, min_jump_forward_boost)
+		velocity.x = facing_dir * boost
 		_jump_buffer_timer = 0.0
 		_coyote_timer = 0.0
 		jumped.emit()
@@ -82,3 +110,38 @@ func _handle_horizontal_movement(delta: float) -> void:
 
 	if sprite and input_dir != 0.0:
 		sprite.scale.x = abs(sprite.scale.x) * sign(input_dir)
+
+func _check_wall_climb_trigger(pre_slide_velocity: Vector2, pre_slide_on_floor: bool) -> void:
+	if not is_on_wall() :
+		return
+	if absf(pre_slide_velocity.x) < wall_run_min_speed:
+		return
+
+	var input_dir := Input.get_axis("move_left", "move_right")
+	# on ne déclenche que si tu tiens encore la touche vers le mur que tu viens de percuter
+	if input_dir == 0.0 or sign(input_dir) != sign(pre_slide_velocity.x):
+		return
+
+	_wall_run_active = true
+	_wall_run_dir = sign(pre_slide_velocity.x)
+
+func _handle_wall_climb(delta: float) -> void:
+	velocity.y = -wall_climb_speed
+	velocity.x = _wall_run_dir * wall_stick_speed  # garde le perso collé au mur
+
+	if sprite:
+		var target_angle := deg_to_rad(90.0) * -_wall_run_dir
+		sprite.rotation = lerp_angle(sprite.rotation, target_angle, wall_run_rotation_speed * delta)
+
+func _check_wall_climb_end() -> void:
+	var input_dir := Input.get_axis("move_left", "move_right")
+	var still_holding: bool = input_dir != 0.0 and sign(input_dir) == _wall_run_dir
+
+	if not is_on_wall() or not still_holding:
+		_end_wall_climb()
+
+func _end_wall_climb() -> void:
+	_wall_run_active = false
+	_wall_run_dir = 0.0
+	if sprite:
+		sprite.rotation = 0.0

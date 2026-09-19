@@ -6,8 +6,8 @@
 [ext_resource type="Script" uid="uid://biwbyuvmjjqsh" path="res://Assets/Scripts/dashIcon.gd" id="4_fkybt"]
 [ext_resource type="Script" uid="uid://c7vmqf26hb435" path="res://Assets/Scripts/timerUi.gd" id="5_fkybt"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_v0iea"]
-size = Vector2(68.571526, 130.00012)
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_fkybt"]
+height = 122.85731
 
 [sub_resource type="LabelSettings" id="LabelSettings_x3wgy"]
 font_size = 45
@@ -19,9 +19,10 @@ scale = Vector2(0.7, 0.7)
 script = ExtResource("1_cvnsp")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=820356157]
-position = Vector2(37.14285, 26.428549)
-scale = Vector2(0.9999986, 0.9999986)
-shape = SubResource("RectangleShape2D_v0iea")
+z_index = 1
+position = Vector2(47.142864, 32.857143)
+scale = Vector2(2.4285693, 0.9999986)
+shape = SubResource("CapsuleShape2D_fkybt")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1236084615]
 position = Vector2(39.285717, 26.680052)
@@ -29,20 +30,21 @@ scale = Vector2(0.078571424, 0.0865971)
 texture = ExtResource("1_v0iea")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=269003190]
+zoom = Vector2(1.355, 1.355)
 
 [node name="DashIcon" type="Sprite2D" parent="." unique_id=1590270546]
-position = Vector2(-712.8482, 349.7563)
-scale = Vector2(0.46885738, 0.46885744)
+position = Vector2(-472.85712, 217.14284)
+scale = Vector2(0.369, 0.369)
 texture = ExtResource("3_vgqql")
 script = ExtResource("4_fkybt")
 player_path = NodePath("../../Player")
 
 [node name="Timer" type="Label" parent="." unique_id=2121359683]
 z_index = 7
-offset_left = -791.4286
-offset_top = -434.2857
-offset_right = -604.2858
-offset_bottom = -294.2857
+offset_left = -574.28577
+offset_top = -324.2857
+offset_right = -387.143
+offset_bottom = -184.2857
 text = "60:00"
 label_settings = SubResource("LabelSettings_x3wgy")
 horizontal_alignment = 1

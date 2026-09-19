@@ -285,7 +285,7 @@ scale = Vector2(2.085, 2.085)
 shape = SubResource("RectangleShape2D_7sml1")
 
 [node name="CollisionShape2D31" type="CollisionShape2D" parent="walls" unique_id=25946191]
-position = Vector2(93, 692.99994)
+position = Vector2(97, 688)
 rotation = 1.5707964
 scale = Vector2(2.085, 2.085)
 shape = SubResource("RectangleShape2D_bd6hb")
