@@ -40,6 +40,7 @@ func _process(_delta: float) -> void:
 
 func _animate_to(target: Vector2) -> void:
 	if _tween:
+		
 		_tween.kill()
 	_tween = create_tween()
 	_tween.set_trans(Tween.TRANS_CUBIC)

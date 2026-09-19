@@ -15,3 +15,10 @@ func next_level():
 		get_tree().change_scene_to_file(levels[current_level - 1])
 	else:
 		print("Game Complete!")
+
+func fail_level():
+	print("Time's up! Level failed.")
+	get_tree().reload_current_scene()
+
+func restart_level():
+	get_tree().reload_current_scene()

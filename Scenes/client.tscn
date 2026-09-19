@@ -6,6 +6,9 @@
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uj04i"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_p5viw"]
+size = Vector2(78.333336, 41.333336)
+
 [node name="Client" type="CharacterBody2D" unique_id=162573114]
 scale = Vector2(3, 3)
 script = ExtResource("1_de1uw")
@@ -16,3 +19,9 @@ texture = SubResource("CanvasTexture_p5viw")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1723446697]
 shape = SubResource("RectangleShape2D_uj04i")
 debug_color = Color(1, 0.0008257793, 0.022295319, 1)
+
+[node name="Area2D" type="Area2D" parent="." unique_id=130810175]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1132060386]
+position = Vector2(1.166666, -10.666667)
+shape = SubResource("RectangleShape2D_p5viw")
