@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://bqscpmbjx8u3d" path="res://Assets/Images/Sprites/wall.png" id="7_wrinw"]
 [ext_resource type="PackedScene" uid="uid://b3qanomsem5ju" path="res://Scenes/client.tscn" id="7_xrdnt"]
 [ext_resource type="Texture2D" uid="uid://x81x1t5il3ks" path="res://Assets/Images/Sprites/floor.png" id="8_chwpn"]
+[ext_resource type="PackedScene" uid="uid://dtbypetvw3rx7" path="res://Scenes/ai_enemi.tscn" id="9_wrinw"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xrdnt"]
 size = Vector2(1223.9808, 20)
@@ -8020,3 +8021,27 @@ z_index = -3
 position = Vector2(3205, 120)
 scale = Vector2(20, 20)
 texture = ExtResource("7_wrinw")
+
+[node name="Ai enemi" parent="." unique_id=1251107288 instance=ExtResource("9_wrinw")]
+position = Vector2(-461.00003, 1144)
+scale = Vector2(2.5, 2.5)
+
+[node name="Ai enemi2" parent="." unique_id=1351544192 instance=ExtResource("9_wrinw")]
+position = Vector2(-128.00003, 1007.0001)
+scale = Vector2(2.5, 2.5)
+
+[node name="Ai enemi3" parent="." unique_id=1830101050 instance=ExtResource("9_wrinw")]
+position = Vector2(-443.99997, 424.00006)
+scale = Vector2(2.5, 2.5)
+
+[node name="Ai enemi4" parent="." unique_id=679548315 instance=ExtResource("9_wrinw")]
+position = Vector2(-480, 127.00006)
+scale = Vector2(2.5, 2.5)
+
+[node name="Ai enemi5" parent="." unique_id=2091016850 instance=ExtResource("9_wrinw")]
+position = Vector2(978.9999, 639)
+scale = Vector2(2.5, 2.5)
+
+[node name="Ai enemi6" parent="." unique_id=1069047064 instance=ExtResource("9_wrinw")]
+position = Vector2(558, 1012)
+scale = Vector2(2.5, 2.5)

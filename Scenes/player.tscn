@@ -59,6 +59,7 @@ size = Vector2(124.28572, 108.57143)
 
 [node name="Player" type="CharacterBody2D" unique_id=734694769 groups=["player"]]
 scale = Vector2(0.7, 0.7)
+collision_layer = 2
 script = ExtResource("1_cvnsp")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=820356157]
@@ -100,10 +101,11 @@ position = Vector2(40, 25.714287)
 scale = Vector2(0.08, 0.085)
 sprite_frames = SubResource("SpriteFrames_uj04i")
 animation = &"run"
-frame_progress = 0.7874078
+frame_progress = 0.9912662
 speed_scale = 1.7
 
 [node name="AttackArea" type="Area2D" parent="." unique_id=933916403]
+collision_mask = 5
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AttackArea" unique_id=2006400194]
 position = Vector2(143.57143, 38.571423)

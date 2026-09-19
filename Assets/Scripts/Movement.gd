@@ -182,10 +182,10 @@ func _update_animation() -> void:
 func _handle_attack(delta: float) -> void:
 	_attack_cooldown_timer = max(_attack_cooldown_timer - delta, 0.0)
 
-	if not attack_area:
-		return
+	if attack_area and animated_sprite:
+		attack_area.scale.x = -1.0 if animated_sprite.flip_h else 1.0
 
-	if Input.is_action_just_pressed(attack_action) and _attack_cooldown_timer <= 0.0:
+	if Input.is_action_just_pressed(attack_action) and _attack_cooldown_timer <= 0.0 and attack_area:
 		_attack_cooldown_timer = attack_cooldown
 
 		for body in attack_area.get_overlapping_bodies():
