@@ -8,10 +8,12 @@ particle_flag_disable_z = true
 radial_velocity_min = 210.51997
 radial_velocity_max = 210.51997
 gravity = Vector3(0, 98, 0)
-scale_min = 0.5
+scale_min = 0.099999994
+scale_max = 0.099999994
 color = Color(0.851769, 0.8517689, 0.85176885, 1)
 
-[node name="HitParticles" type="GPUParticles2D" unique_id=1994996008]
+[node name="RunParticles" type="GPUParticles2D" unique_id=1994996008]
+scale = Vector2(0.1, 0.1)
 amount_ratio = 0.8404
 sub_emitter = NodePath(".")
 texture = ExtResource("1_4psj7")

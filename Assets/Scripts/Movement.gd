@@ -5,6 +5,7 @@ extends CharacterBody2D
 @export var acceleration: float = 4000.0
 @export var friction: float = 5000.0
 @export var air_control_multiplier: float = 0.8
+@onready var run_particles: GPUParticles2D = get_node_or_null("HitParticles")
 
 @export_category("Wall Climb")
 @export var wall_run_min_speed: float = 400.0     # vitesse mini au sol pour déclencher
@@ -178,7 +179,9 @@ func _update_animation() -> void:
 	else:
 		if animated_sprite.animation != "idle":
 			animated_sprite.play("idle")
-
+	
+	if run_particles:
+		run_particles.emitting = (_wall_run_active or is_moving) and is_on_floor()
 func _handle_attack(delta: float) -> void:
 	_attack_cooldown_timer = max(_attack_cooldown_timer - delta, 0.0)
 

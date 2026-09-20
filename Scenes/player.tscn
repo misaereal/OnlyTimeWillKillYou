@@ -5,12 +5,13 @@
 [ext_resource type="Texture2D" uid="uid://frisem13rqc3" path="res://Assets/Images/UI/DashUI.png" id="3_vgqql"]
 [ext_resource type="Script" uid="uid://biwbyuvmjjqsh" path="res://Assets/Scripts/dashIcon.gd" id="4_fkybt"]
 [ext_resource type="Script" uid="uid://c7vmqf26hb435" path="res://Assets/Scripts/timerUi.gd" id="5_fkybt"]
-[ext_resource type="Texture2D" uid="uid://bpg42rjq0o3v3" path="res://Assets/Images/Sprites/frame0000.png" id="6_gymyn"]
-[ext_resource type="Texture2D" uid="uid://dal2ogy8hcr16" path="res://Assets/Images/Sprites/frame0001.png" id="7_pu2lt"]
-[ext_resource type="Texture2D" uid="uid://cwk1e05r0w8bi" path="res://Assets/Images/Sprites/frame0002.png" id="8_ukyrk"]
-[ext_resource type="Texture2D" uid="uid://kdu4urd3t4oa" path="res://Assets/Images/Sprites/frame0003.png" id="9_7dp3o"]
-[ext_resource type="Texture2D" uid="uid://cr1yq4jdrrr11" path="res://Assets/Images/Sprites/frame0004.png" id="10_h4iuc"]
-[ext_resource type="Texture2D" uid="uid://cmleo08dkv2ar" path="res://Assets/Images/Sprites/frame0005.png" id="11_fd4e3"]
+[ext_resource type="Texture2D" uid="uid://hsjscvqf5n3l" path="res://Assets/Images/Sprites/cat_running0000.png" id="6_gymyn"]
+[ext_resource type="Texture2D" uid="uid://c0j5ox6yj8eso" path="res://Assets/Images/Sprites/cat_running0001.png" id="7_pu2lt"]
+[ext_resource type="Texture2D" uid="uid://dsupoaiwp7xc6" path="res://Assets/Images/Sprites/cat_running0002.png" id="8_ukyrk"]
+[ext_resource type="Texture2D" uid="uid://c0tr6ebsrtq7" path="res://Assets/Images/Sprites/cat_running0004.png" id="9_7dp3o"]
+[ext_resource type="Texture2D" uid="uid://c8sixub2xhf4f" path="res://Assets/Images/Sprites/cat_running0003.png" id="10_h4iuc"]
+[ext_resource type="Texture2D" uid="uid://5vttyphnlmni" path="res://Assets/Images/Sprites/cat_running0005.png" id="11_fd4e3"]
+[ext_resource type="PackedScene" uid="uid://ceeapr4jgqd7a" path="res://Scenes/hit_particles.tscn" id="12_pu2lt"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_fkybt"]
 height = 122.85731
@@ -100,8 +101,7 @@ script = ExtResource("5_fkybt")
 position = Vector2(40, 25.714287)
 scale = Vector2(0.08, 0.085)
 sprite_frames = SubResource("SpriteFrames_uj04i")
-animation = &"run"
-frame_progress = 0.9912662
+animation = &"idle"
 speed_scale = 1.7
 
 [node name="AttackArea" type="Area2D" parent="." unique_id=933916403]
@@ -111,3 +111,5 @@ collision_mask = 5
 position = Vector2(143.57143, 38.571423)
 scale = Vector2(0.99999994, 0.99999994)
 shape = SubResource("RectangleShape2D_uj04i")
+
+[node name="HitParticles" parent="." unique_id=1994996008 instance=ExtResource("12_pu2lt")]
