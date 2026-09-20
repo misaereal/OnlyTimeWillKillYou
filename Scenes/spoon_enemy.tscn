@@ -1,0 +1,80 @@
+[gd_scene format=3 uid="uid://dhd8lt2d8p3q0"]
+
+[ext_resource type="Script" uid="uid://dars2lcwxqamj" path="res://Scenes/ai_enemi.gd" id="1_j0qev"]
+[ext_resource type="Texture2D" uid="uid://ce6qvtnyfmpr0" path="res://Assets/Images/Sprites/spoon_attack0000.png" id="2_j0qev"]
+[ext_resource type="Texture2D" uid="uid://c6malkovlomeo" path="res://Assets/Images/Sprites/spoon_monster0000.png" id="2_v1cr7"]
+[ext_resource type="Texture2D" uid="uid://ddchplabua80v" path="res://Assets/Images/Sprites/spoon_attack0001.png" id="3_csfdn"]
+[ext_resource type="Texture2D" uid="uid://dmsbu6yijnun" path="res://Assets/Images/Sprites/spoon_monster0001.png" id="3_yev5c"]
+[ext_resource type="Texture2D" uid="uid://5v5aam1qorhx" path="res://Assets/Images/Sprites/spoon_attack0002.png" id="4_drnop"]
+[ext_resource type="Texture2D" uid="uid://c6h88vtskdnjl" path="res://Assets/Images/Sprites/spoon_monster0002.png" id="4_t2lsy"]
+[ext_resource type="Texture2D" uid="uid://c6xooym754knn" path="res://Assets/Images/Sprites/spoon_monster0003.png" id="5_quwat"]
+[ext_resource type="Texture2D" uid="uid://dfrbd7en1xo0m" path="res://Assets/Images/Sprites/spoon_attack0003.png" id="5_ys782"]
+[ext_resource type="Texture2D" uid="uid://dfrvjftma56oa" path="res://Assets/Images/Sprites/spoon_monster0004.png" id="6_j0qev"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_p5viw"]
+size = Vector2(20, 32)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jc63w"]
+size = Vector2(55, 44)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_uj04i"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_j0qev")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_csfdn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_drnop")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_ys782")
+}],
+"loop": 1,
+"name": &"attack",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_v1cr7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_yev5c")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_t2lsy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_quwat")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_j0qev")
+}],
+"loop": 1,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[node name="spoon_enemy" type="StaticBody2D" unique_id=1251107288]
+collision_layer = 4
+script = ExtResource("1_j0qev")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1987538543]
+position = Vector2(0, -6)
+shape = SubResource("RectangleShape2D_p5viw")
+
+[node name="DetectionArea" type="Area2D" parent="." unique_id=60676803]
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionArea" unique_id=24980063]
+position = Vector2(-0.5, -12)
+shape = SubResource("RectangleShape2D_jc63w")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1363719516]
+position = Vector2(0, -4.9999995)
+scale = Vector2(0.025, 0.025)
+sprite_frames = SubResource("SpriteFrames_uj04i")
+animation = &"attack"
+speed_scale = 0.7

@@ -1,0 +1,80 @@
+[gd_scene format=3 uid="uid://dtbypetvw3rx7"]
+
+[ext_resource type="Script" uid="uid://dars2lcwxqamj" path="res://Scenes/ai_enemi.gd" id="1_yuo1d"]
+[ext_resource type="Texture2D" uid="uid://ce6pxc3lyq4i6" path="res://Assets/Images/Sprites/fork_monster0000.png" id="2_ehm85"]
+[ext_resource type="Texture2D" uid="uid://byhs0ao0ijaos" path="res://Assets/Images/Sprites/fork_attack0000.png" id="2_hsmlr"]
+[ext_resource type="Texture2D" uid="uid://c700mla36oh03" path="res://Assets/Images/Sprites/fork_attack0001.png" id="3_m4bdy"]
+[ext_resource type="Texture2D" uid="uid://d23qnxj7k42x4" path="res://Assets/Images/Sprites/fork_monster0001.png" id="3_tqpa0"]
+[ext_resource type="Texture2D" uid="uid://dnrou6qkix7nm" path="res://Assets/Images/Sprites/fork_attack0002.png" id="4_q0tsb"]
+[ext_resource type="Texture2D" uid="uid://c15q16t1do2ak" path="res://Assets/Images/Sprites/fork_monster0002.png" id="4_ri2q7"]
+[ext_resource type="Texture2D" uid="uid://skm2yixqiubg" path="res://Assets/Images/Sprites/fork_attack0003.png" id="5_hi80q"]
+[ext_resource type="Texture2D" uid="uid://cufh25pcm22hk" path="res://Assets/Images/Sprites/fork_monster0003.png" id="5_jte5i"]
+[ext_resource type="Texture2D" uid="uid://cnhlo4c4wh574" path="res://Assets/Images/Sprites/fork_monster0004.png" id="6_hsmlr"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_p5viw"]
+size = Vector2(20, 32)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jc63w"]
+size = Vector2(55, 44)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_uj04i"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_hsmlr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_m4bdy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_q0tsb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_hi80q")
+}],
+"loop": 1,
+"name": &"attack",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_ehm85")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_tqpa0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_ri2q7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_jte5i")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_hsmlr")
+}],
+"loop": 1,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[node name="fork_enemy" type="StaticBody2D" unique_id=1251107288]
+collision_layer = 4
+script = ExtResource("1_yuo1d")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1987538543]
+position = Vector2(0, -6)
+shape = SubResource("RectangleShape2D_p5viw")
+
+[node name="DetectionArea" type="Area2D" parent="." unique_id=60676803]
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionArea" unique_id=24980063]
+position = Vector2(-0.5, -12)
+shape = SubResource("RectangleShape2D_jc63w")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1363719516]
+position = Vector2(0, -4.9999995)
+scale = Vector2(0.025, 0.025)
+sprite_frames = SubResource("SpriteFrames_uj04i")
+animation = &"idle"
+speed_scale = 0.7

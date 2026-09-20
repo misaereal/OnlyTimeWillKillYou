@@ -8,7 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://bqscpmbjx8u3d" path="res://Assets/Images/Sprites/wall.png" id="7_wrinw"]
 [ext_resource type="PackedScene" uid="uid://b3qanomsem5ju" path="res://Scenes/client.tscn" id="7_xrdnt"]
 [ext_resource type="Texture2D" uid="uid://x81x1t5il3ks" path="res://Assets/Images/Sprites/floor.png" id="8_chwpn"]
-[ext_resource type="PackedScene" uid="uid://dtbypetvw3rx7" path="res://Scenes/ai_enemi.tscn" id="9_wrinw"]
+[ext_resource type="PackedScene" uid="uid://dtbypetvw3rx7" path="res://Scenes/fork_enemy.tscn" id="9_wrinw"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xrdnt"]
 size = Vector2(1223.9808, 20)
