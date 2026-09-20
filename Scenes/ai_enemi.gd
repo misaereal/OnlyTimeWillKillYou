@@ -55,13 +55,15 @@ func _on_body_exited(body: Node) -> void:
 
 func _attack_player() -> void:
 	GameTimer.add_time(-time_penalty_on_hit)
+	SoundManager.play_sfx(SoundManager.SFX_ATTACK)
 
 func take_damage(amount: int = 1) -> void:
+	
 	if _is_dead:
 		return
 
 	_health -= amount
-
+	SoundManager.play_sfx(SoundManager.SFX_HURT)
 	if _health <= 0:
 		_die()
 

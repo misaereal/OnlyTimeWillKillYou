@@ -4,8 +4,7 @@ var current_level: int = 1
 
 var levels = [
 	"res://Scenes/level_1.tscn",
-	"res://Scenes/level_2.tscn",
-	"res://Scenes/level_3.tscn"
+	"res://Scenes/level_2.tscn"
 ]
 
 func next_level():

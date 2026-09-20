@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://bh40j2huaqncn"
+path="res://.godot/imported/0920 gameplay final version.mp3-489c555c63988360a5162ed90a4688b2.mp3str"
+
+[deps]
+
+source_file="res://Assets/Sound/0920 gameplay final version.mp3"
+dest_files=["res://.godot/imported/0920 gameplay final version.mp3-489c555c63988360a5162ed90a4688b2.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

@@ -13,7 +13,7 @@ func _ready() -> void:
 
 	GameTimer.reset(60.0)
 	GameTimer.start()
-
+	SoundManager.play_music(SoundManager.MUSIC_GAMEPLAY)
 func _on_client_served():
 	if _level_ended:
 		return
@@ -31,10 +31,12 @@ func _on_time_up():
 
 func _finish_level():
 	_level_ended = true
+	SoundManager.play_sfx(SoundManager.SFX_LEVEL_COMPLETE)
 	GameTimer.stop()
 	GameManager.next_level()
 
 func _fail_level():
 	_level_ended = true
+	SoundManager.play_sfx(SoundManager.SFX_GAME_OVER)
 	GameTimer.stop()
 	GameManager.fail_level()

@@ -26,6 +26,7 @@ buses/bg_color=Color(1, 1, 1, 1)
 
 GameManager="*uid://diigknyyn2yrj"
 GameTimer="*uid://chyb6c5ftq2w0"
+SoundManager="*uid://d20dqayyfsela"
 
 [display]
 

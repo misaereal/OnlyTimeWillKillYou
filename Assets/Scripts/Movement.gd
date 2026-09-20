@@ -115,6 +115,7 @@ func _handle_jump_input(_delta: float) -> void:
 		var facing_dir: float = signf(velocity.x) if absf(velocity.x) > 10.0 else (1.0 if not sprite else signf(sprite.scale.x))
 		var boost: float = max(absf(velocity.x) * jump_forward_multiplier, min_jump_forward_boost)
 		velocity.x = facing_dir * boost
+		SoundManager.play_sfx(SoundManager.SFX_JUMP)
 		_jump_buffer_timer = 0.0
 		_coyote_timer = 0.0
 		jumped.emit()
@@ -198,6 +199,7 @@ func _handle_attack(delta: float) -> void:
 		attack_area.scale.x = -1.0 if animated_sprite.flip_h else 1.0
 
 	if Input.is_action_just_pressed(attack_action) and _attack_cooldown_timer <= 0.0 and attack_area:
+		SoundManager.play_sfx(SoundManager.SFX_ATTACK)
 		_attack_cooldown_timer = attack_cooldown
 
 		for body in attack_area.get_overlapping_bodies():
