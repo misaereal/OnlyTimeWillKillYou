@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://ceqvdi5hxvutj"]
+
+[ext_resource type="Script" uid="uid://bahlepiuhuoh5" path="res://Scenes/tomato.gd" id="1_bnlwl"]
+[ext_resource type="Texture2D" uid="uid://b2bresgcasdrw" path="res://Assets/Images/Sprites/tomato_thrown0000.png" id="1_ho7p5"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_uj04i"]
+
+[node name="Tomato" type="Area2D" unique_id=235704232]
+collision_mask = 5
+script = ExtResource("1_bnlwl")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=431061307]
+shape = SubResource("CircleShape2D_uj04i")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1519023350]
+position = Vector2(45, -5)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("1_ho7p5")

@@ -1,5 +1,8 @@
 extends CharacterBody2D
 
+const TOMATO_SCENE: PackedScene = preload("res://Scenes/tomato.tscn")
+var _is_attacking: bool = false
+
 @export_category("Movement")
 @export var move_speed: float = 650.0
 @export var acceleration: float = 4000.0
@@ -53,6 +56,9 @@ var _attack_cooldown_timer: float = 0.0
 signal jumped
 signal landed
 
+func _ready() -> void:
+	if animated_sprite:
+		animated_sprite.animation_finished.connect(_on_attack_animation_finished)
 
 
 
@@ -178,7 +184,11 @@ func _end_wall_climb() -> void:
 func _update_animation() -> void:
 	if not animated_sprite:
 		return
-
+	if _is_attacking:
+		if run_particles:
+			run_particles.emitting = false
+		return
+	
 	var input_dir := Input.get_axis("move_left", "move_right")
 	var is_moving := absf(velocity.x) > 10.0 and input_dir != 0.0
 
@@ -195,13 +205,25 @@ func _update_animation() -> void:
 func _handle_attack(delta: float) -> void:
 	_attack_cooldown_timer = max(_attack_cooldown_timer - delta, 0.0)
 
-	if attack_area and animated_sprite:
-		attack_area.scale.x = -1.0 if animated_sprite.flip_h else 1.0
-
-	if Input.is_action_just_pressed(attack_action) and _attack_cooldown_timer <= 0.0 and attack_area:
-		SoundManager.play_sfx(SoundManager.SFX_ATTACK)
+	if Input.is_action_just_pressed(attack_action) and _attack_cooldown_timer <= 0.0:
 		_attack_cooldown_timer = attack_cooldown
+		SoundManager.play_sfx(SoundManager.SFX_ATTACK)
 
-		for body in attack_area.get_overlapping_bodies():
-			if body.is_in_group("enemy") and body.has_method("take_damage"):
-				body.take_damage(attack_damage)
+		_is_attacking = true
+		if animated_sprite:
+			animated_sprite.play("attack")
+
+		_throw_tomato()
+
+func _throw_tomato() -> void:
+	var tomato := TOMATO_SCENE.instantiate()
+	get_tree().current_scene.add_child(tomato)
+
+	var dir: float = -1.0 if (animated_sprite and animated_sprite.flip_h) else 1.0
+	tomato.direction = dir
+	tomato.damage = attack_damage
+	tomato.global_position = attack_area.global_position if attack_area else global_position
+
+func _on_attack_animation_finished() -> void:
+	if animated_sprite.animation == "attack":
+		_is_attacking = false

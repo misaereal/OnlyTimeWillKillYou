@@ -12,7 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://cnhlo4c4wh574" path="res://Assets/Images/Sprites/fork_monster0004.png" id="6_hsmlr"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_p5viw"]
-size = Vector2(20, 32)
+size = Vector2(20, 48)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jc63w"]
 size = Vector2(55, 44)
@@ -62,7 +62,7 @@ collision_layer = 4
 script = ExtResource("1_yuo1d")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1987538543]
-position = Vector2(0, -6)
+position = Vector2(0, -14)
 shape = SubResource("RectangleShape2D_p5viw")
 
 [node name="DetectionArea" type="Area2D" parent="." unique_id=60676803]

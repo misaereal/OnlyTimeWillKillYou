@@ -6,10 +6,16 @@
 [ext_resource type="Script" uid="uid://biwbyuvmjjqsh" path="res://Assets/Scripts/dashIcon.gd" id="4_fkybt"]
 [ext_resource type="Script" uid="uid://c7vmqf26hb435" path="res://Assets/Scripts/timerUi.gd" id="5_fkybt"]
 [ext_resource type="Texture2D" uid="uid://hsjscvqf5n3l" path="res://Assets/Images/Sprites/cat_running0000.png" id="6_gymyn"]
+[ext_resource type="Texture2D" uid="uid://kmnl71nt32g6" path="res://Assets/Images/Sprites/cat_attack0000.png" id="6_igrcy"]
+[ext_resource type="Texture2D" uid="uid://dojt2p7evpilv" path="res://Assets/Images/Sprites/cat_attack0001.png" id="7_fs7ks"]
 [ext_resource type="Texture2D" uid="uid://c0j5ox6yj8eso" path="res://Assets/Images/Sprites/cat_running0001.png" id="7_pu2lt"]
+[ext_resource type="Texture2D" uid="uid://bgvvnamweul6q" path="res://Assets/Images/Sprites/cat_attack0002.png" id="8_l6n3p"]
 [ext_resource type="Texture2D" uid="uid://dsupoaiwp7xc6" path="res://Assets/Images/Sprites/cat_running0002.png" id="8_ukyrk"]
 [ext_resource type="Texture2D" uid="uid://c0tr6ebsrtq7" path="res://Assets/Images/Sprites/cat_running0004.png" id="9_7dp3o"]
+[ext_resource type="Texture2D" uid="uid://cf84o5wp0c7qg" path="res://Assets/Images/Sprites/cat_attack0003.png" id="9_olqyp"]
 [ext_resource type="Texture2D" uid="uid://c8sixub2xhf4f" path="res://Assets/Images/Sprites/cat_running0003.png" id="10_h4iuc"]
+[ext_resource type="Texture2D" uid="uid://cubejk0yw6vu1" path="res://Assets/Images/Sprites/cat_attack0004.png" id="10_wpjfl"]
+[ext_resource type="Texture2D" uid="uid://ddble6s7g7ida" path="res://Assets/Images/Sprites/cat_attack0005.png" id="11_bi64h"]
 [ext_resource type="Texture2D" uid="uid://5vttyphnlmni" path="res://Assets/Images/Sprites/cat_running0005.png" id="11_fd4e3"]
 [ext_resource type="PackedScene" uid="uid://ceeapr4jgqd7a" path="res://Scenes/TrailParticles.tscn" id="12_pu2lt"]
 
@@ -23,6 +29,29 @@ outline_color = Color(0, 0, 0, 1)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_uj04i"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_igrcy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_fs7ks")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_l6n3p")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_olqyp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_wpjfl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_bi64h")
+}],
+"loop": 0,
+"name": &"attack",
+"speed": 5.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": ExtResource("1_v0iea")
@@ -101,7 +130,9 @@ script = ExtResource("5_fkybt")
 position = Vector2(40, 25.714287)
 scale = Vector2(0.08, 0.085)
 sprite_frames = SubResource("SpriteFrames_uj04i")
-animation = &"idle"
+animation = &"attack"
+frame = 5
+frame_progress = 1.0
 speed_scale = 1.7
 
 [node name="AttackArea" type="Area2D" parent="." unique_id=933916403]
