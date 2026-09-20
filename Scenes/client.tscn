@@ -1,8 +1,9 @@
 [gd_scene format=3 uid="uid://b3qanomsem5ju"]
 
 [ext_resource type="Script" uid="uid://c3fenppyfmnhw" path="res://Assets/Scripts/client.gd" id="1_de1uw"]
-
-[sub_resource type="CanvasTexture" id="CanvasTexture_p5viw"]
+[ext_resource type="Texture2D" uid="uid://dbyid4ngou2ja" path="res://Assets/Images/Sprites/cat_1.png" id="2_v1moc"]
+[ext_resource type="Texture2D" uid="uid://bux5p8qnxuq72" path="res://Assets/Images/Sprites/chair.png" id="3_wuhft"]
+[ext_resource type="Texture2D" uid="uid://dpklcm38necvx" path="res://Assets/Images/Sprites/table.png" id="4_wuhft"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uj04i"]
 
@@ -15,15 +16,28 @@ collision_layer = 8
 script = ExtResource("1_de1uw")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1660935389]
-texture = SubResource("CanvasTexture_p5viw")
+z_index = 3
+position = Vector2(1.333334, -10.666666)
+scale = Vector2(0.02, 0.02)
+texture = ExtResource("2_v1moc")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1723446697]
 shape = SubResource("RectangleShape2D_uj04i")
-debug_color = Color(1, 0.0008257793, 0.022295319, 1)
 
 [node name="Area2D" type="Area2D" parent="." unique_id=130810175]
+position = Vector2(-0.6666667, 6.3333335)
 collision_mask = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1132060386]
 position = Vector2(1.166666, -10.666667)
 shape = SubResource("RectangleShape2D_p5viw")
+
+[node name="Sprite2D2" type="Sprite2D" parent="." unique_id=654107168]
+scale = Vector2(0.02, 0.02)
+texture = ExtResource("3_wuhft")
+
+[node name="Sprite2D3" type="Sprite2D" parent="." unique_id=1345117695]
+z_index = 4
+position = Vector2(-6.3333335, 5)
+scale = Vector2(0.02, 0.02)
+texture = ExtResource("4_wuhft")
