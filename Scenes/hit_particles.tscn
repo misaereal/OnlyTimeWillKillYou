@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://ceeapr4jgqd7a"]
+
+[ext_resource type="Texture2D" uid="uid://cus5biohygytp" path="res://Assets/Images/UI/boule.png" id="1_4psj7"]
+[ext_resource type="Script" uid="uid://ba8iem55no8im" path="res://hit_particles.gd" id="1_aojat"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_26wnh"]
+particle_flag_disable_z = true
+radial_velocity_min = 210.51997
+radial_velocity_max = 210.51997
+gravity = Vector3(0, 98, 0)
+scale_min = 0.5
+color = Color(0.851769, 0.8517689, 0.85176885, 1)
+
+[node name="HitParticles" type="GPUParticles2D" unique_id=1994996008]
+amount_ratio = 0.8404
+sub_emitter = NodePath(".")
+texture = ExtResource("1_4psj7")
+process_material = SubResource("ParticleProcessMaterial_26wnh")
+script = ExtResource("1_aojat")
