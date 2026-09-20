@@ -11,7 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://c0tr6ebsrtq7" path="res://Assets/Images/Sprites/cat_running0004.png" id="9_7dp3o"]
 [ext_resource type="Texture2D" uid="uid://c8sixub2xhf4f" path="res://Assets/Images/Sprites/cat_running0003.png" id="10_h4iuc"]
 [ext_resource type="Texture2D" uid="uid://5vttyphnlmni" path="res://Assets/Images/Sprites/cat_running0005.png" id="11_fd4e3"]
-[ext_resource type="PackedScene" uid="uid://ceeapr4jgqd7a" path="res://Scenes/hit_particles.tscn" id="12_pu2lt"]
+[ext_resource type="PackedScene" uid="uid://ceeapr4jgqd7a" path="res://Scenes/TrailParticles.tscn" id="12_pu2lt"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_fkybt"]
 height = 122.85731
@@ -113,3 +113,4 @@ scale = Vector2(0.99999994, 0.99999994)
 shape = SubResource("RectangleShape2D_uj04i")
 
 [node name="HitParticles" parent="." unique_id=1994996008 instance=ExtResource("12_pu2lt")]
+position = Vector2(49.999996, 82.85714)

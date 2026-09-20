@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://ceeapr4jgqd7a"]
+
+[ext_resource type="Texture2D" uid="uid://cus5biohygytp" path="res://Assets/Images/UI/boule.png" id="1_3f0ox"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_uj04i"]
+particle_flag_disable_z = true
+spread = 49.426
+initial_velocity_min = 37.02
+initial_velocity_max = 80.0
+scale_min = 0.099999994
+scale_max = 0.14999999
+
+[node name="TrailParticles" type="Node2D" unique_id=1570896762]
+rotation = 3.185226
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="." unique_id=2115945305]
+emitting = false
+texture = ExtResource("1_3f0ox")
+speed_scale = 1.5
+process_material = SubResource("ParticleProcessMaterial_uj04i")
