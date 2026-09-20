@@ -14,7 +14,7 @@ color = Color(0.851769, 0.8517689, 0.85176885, 1)
 
 [node name="RunParticles" type="GPUParticles2D" unique_id=1994996008]
 scale = Vector2(0.1, 0.1)
-amount_ratio = 0.8404
+amount_ratio = 0.7571
 sub_emitter = NodePath(".")
 texture = ExtResource("1_4psj7")
 process_material = SubResource("ParticleProcessMaterial_26wnh")
