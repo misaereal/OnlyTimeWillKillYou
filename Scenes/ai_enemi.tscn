@@ -1,0 +1,33 @@
+[gd_scene format=3 uid="uid://dtbypetvw3rx7"]
+
+[ext_resource type="Script" uid="uid://dars2lcwxqamj" path="res://Scenes/ai_enemi.gd" id="1_yuo1d"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_p5viw"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_uj04i"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jc63w"]
+size = Vector2(55, 44)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_uj04i"]
+
+[node name="Ai enemi" type="StaticBody2D" unique_id=1251107288]
+collision_layer = 4
+script = ExtResource("1_yuo1d")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1987538543]
+shape = SubResource("RectangleShape2D_p5viw")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1130648431]
+scale = Vector2(19.7, 19.7)
+texture = SubResource("CanvasTexture_uj04i")
+
+[node name="DetectionArea" type="Area2D" parent="." unique_id=60676803]
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionArea" unique_id=24980063]
+position = Vector2(-0.5, -12)
+shape = SubResource("RectangleShape2D_jc63w")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1363719516]
+sprite_frames = SubResource("SpriteFrames_uj04i")
