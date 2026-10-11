@@ -6,6 +6,7 @@ const SFX_GAME_OVER: String = "res://Assets/Sound/Game Over.wav"
 const SFX_HURT: String = "res://Assets/Sound/Hurt_1.wav"
 const SFX_JUMP: String = "res://Assets/Sound/Jump_1.wav"
 const SFX_LEVEL_COMPLETE: String = "res://Assets/Sound/Level Complete.wav"
+const MUSIC_MENU: String = "res://Assets/Sound/Menu Music.wav"
 
 @export var sfx_volume_db: float = 0.0
 @export var music_volume_db: float = -5.0
