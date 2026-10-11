@@ -1,0 +1,29 @@
+[gd_scene format=3 uid="uid://dhvu7igqwbwws"]
+
+[ext_resource type="Texture2D" uid="uid://cv4da72uvr3we" path="res://Assets/Images/UI/background.png" id="1_pposm"]
+[ext_resource type="Texture2D" uid="uid://rqel6yg4lila" path="res://Assets/Images/UI/button.png" id="2_web8u"]
+[ext_resource type="Script" uid="uid://cxraafvj2exsg" path="res://Assets/Scripts/menu.gd" id="3_v4pkt"]
+[ext_resource type="PackedScene" uid="uid://73gw0hie24b3" path="res://Scenes/level_1.tscn" id="4_lah54"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6kk2x"]
+size = Vector2(340, 86)
+
+[node name="Mainmenu" type="Node2D" unique_id=316490376]
+
+[node name="Background" type="Sprite2D" parent="." unique_id=284275316]
+position = Vector2(577.2223, 325.25)
+scale = Vector2(0.60138893, 0.6013889)
+texture = ExtResource("1_pposm")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1403843725]
+script = ExtResource("3_v4pkt")
+target_scene = ExtResource("4_lah54")
+
+[node name="Button" type="Sprite2D" parent="Area2D" unique_id=1256921981]
+position = Vector2(250.00002, 248)
+scale = Vector2(0.59781706, 0.59781724)
+texture = ExtResource("2_web8u")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=489087200]
+position = Vector2(247, 249)
+shape = SubResource("RectangleShape2D_6kk2x")
